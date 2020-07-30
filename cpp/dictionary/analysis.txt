@@ -1,0 +1,17 @@
+TIME COMPLEXITY ANALYSIS OF TODAY'S PROBLEM
+
+There are 2 functions and a driver function.
+
+In the function make_word, the for loop iterates "how_long" times. In each iteration, an alphabet is randomly chosen, which is of constant order, say c1. So the number of operations in the function is of the order how_long * c1. Since we are trying to generate meaningful words using the program, the maximum value of how_long is 45 (pneumonoultramicroscopicsilicovolcanoconiosis is the longest known word). Since the order of this function is equal to the product of 2 constants, this function is of constant order.
+
+Let the number of words in the collection of meaningful words (sowpods.txt) be "n". In the function load_words, the while loop iterates n times. In each of the iteration, only the function "insert" is called. Insert in sets is a constant order function, say c2. So total complexity is c2 * n. Upon comparison, c2 << n. So, the function has a complexity of O(n).
+
+The driver function (main) can be divided into 2 parts, creation of a set of all meaningful words and generation of strings.
+For creating a set, the function load_words is called once. So this is of the complexity O(n).
+Let 1/m be the probability of getting a meaningful word from the generated strings and c be the number of meaningful words to be generated. The while loop to generate words has c iterations. In each of the iterations, make_word and the find function are called once for every string generated. Both of these functions are of constant order, say c3. But the probability that the generated string is a meaningful word is 1/m, i.e, m words will have to be generated to get a meaningful word. So the complexity for the generation of c meaningful words is O(c * m * c3). Since c3 << m, c3 can be ignored.
+The complexity of the program will be O(n + c*m).
+	n = Order of number of meaningful words
+	1/m = Probability of the generated string being a meaningful word
+	c = number of meaningful words required.
+But if c is of constant order, it can be ignored when compared to m.
+So the final complexity of the program is of O(n+m).
