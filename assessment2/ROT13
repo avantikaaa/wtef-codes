@@ -1,0 +1,28 @@
+def generate_encrypted_string(string):
+    out = ""
+    for i in string:
+        if not i.isalpha():
+            out = out+i
+        else:
+            asc = ord(i)
+            if((asc>=97 and asc<=109) or (asc>=65 and asc<=77)):
+                out = out + chr(asc+13)
+            else:
+                out = out + chr(asc-13)
+    return out
+
+'''
+def generate_encrypted_string(string):
+	# YOUR CODE HERE
+    out = ""
+    for i in string:
+        if(i.isalpha()):
+            asc = ord(i)
+            if(asc<110):
+                out = out + chr(asc+13)
+            else:
+                out = out + chr(asc-13)
+        else:
+            out = out + i
+    return out
+'''
